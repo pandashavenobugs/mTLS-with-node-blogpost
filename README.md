@@ -23,9 +23,7 @@ cd certs
 
 Creating server certificate and key
 
-## note
-
-After creating the certificate and key, we could see some questions about certificates such as country, locality name and email address, etc. You can pass all of the questions by pressing enter. In this tutorial, I'm passing all of these questions because I use the IP address instead of hostname. In addition, you can change the rsa and days. It depends on what you want.
+### note After creating the certificate and key, we could see some questions about certificates such as country, locality name and email address, etc. You can pass all of the questions by pressing enter. In this tutorial, I'm passing all of these questions because I use the IP address instead of hostname. In addition, you can change the rsa and days. It depends on what you want.
 
 ```bash
 openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout server.key -out server.crt
@@ -72,3 +70,7 @@ server{
 
 }
 ```
+
+In this example, using "ssl_client_certificate", the nginx server verifies the certificate which is claimed by the client. The client makes a request to the "https://{serverIP}/api/" host with the client certificate and client key. If the nginx server verifies the certificate, passes this request to "http://127.0.0.1:3000".
+
+### note: Usually ssl certificates are used in /etc/ssl directory but in this tutorial, I get the certificates in the certs folder in the /etc/nginx directory.
