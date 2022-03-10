@@ -11,3 +11,35 @@ source:https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/
 # What does the nginx server in this situation?
 
 The nginx server presents the TLS certificate and verifies the certificate of the client. if there is a certificate of the client and the server can verify it the nginx server grants the client access and passes the client request to node js express server using reverse proxy. If not, the nginx server rejects the client and sends an error message.
+
+# Creating certificates
+
+Creating a cert folder and navigating to it
+
+```bash
+mkdir certs
+cd certs
+```
+
+Creating server certificate and key
+
+## note
+
+After creating the certificate and key, we could see some questions about certificates such as country, locality name and email address, etc. You can pass all of the questions by pressing enter. In this tutorial, I'm passing all of these questions because I use the IP address instead of hostname. In addition, you can change the rsa and days. It depends on what you want.
+
+```bash
+openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout server.key -out server.crt
+```
+
+Creating client certificate and key
+
+```bash
+openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout client.key -out client.crt
+```
+
+navigating back and copy-pasting the certs folder to /etc/nginx/ directory
+
+```bash
+cd ..
+sudo cp -r certs /etc/nginx/
+```
