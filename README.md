@@ -10,7 +10,7 @@ source:https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/
 
 # What does the nginx server in this situation?
 
-The nginx server presents the TLS certificate and verifies the certificate of the client. if there is a certificate of the client and the server can verify it the nginx server grants the client access and passes the client request to node js express server using reverse proxy. If not, the nginx server rejects the client and sends an error message.
+The nginx server presents the TLS certificate and verifies the certificate of the client. if there is a certificate of the client and the nginx server can verify it the nginx server grants the client access and passes the client request to node js express server using reverse proxy. If not, the nginx server rejects the client and sends an error message.
 
 # Creating certificates
 
