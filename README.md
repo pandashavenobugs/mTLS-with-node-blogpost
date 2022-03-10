@@ -43,3 +43,32 @@ navigating back and copy-pasting the certs folder to /etc/nginx/ directory
 cd ..
 sudo cp -r certs /etc/nginx/
 ```
+
+# nginx configuration
+
+heading to the /etc/nginx directory
+
+```bash
+cd /etc/nginx/sites-available
+```
+
+creating and editingthe nginx server configuration which is named myapp.
+
+The myapp file
+
+```.conf
+server{
+    listen 443 ssl;
+    ssl_certificate /etc/nginx/certs/server.crt;
+    ssl_certificate_key /etc/nginx/certs/server.key;
+    ssl_client_certificate /etc/nginx/certs/client.crt;
+    ssl_verify_client on;
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+}
+```
