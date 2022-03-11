@@ -296,7 +296,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-While creating the client,the important thing is the "rejectUnauthorized: false" side. If the rejectUnauthorized is true, the axios throws the 'DEPTH_ZERO_SELF_SIGNED_CERT' error.
+While creating the client, the important thing is the "rejectUnauthorized: false" side. If the rejectUnauthorized is true, the axios throws the 'DEPTH_ZERO_SELF_SIGNED_CERT' error. If you are working with a server with its own self-signed certificate set the rejectUnauthorized false. It can cause some problems later.
 
 # Compiling and running
 
