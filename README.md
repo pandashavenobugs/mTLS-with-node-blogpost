@@ -75,4 +75,133 @@ In this example, using "ssl_client_certificate", the nginx server verifies the c
 
 ### Note: Usually ssl certificates are used in /etc/ssl directory but in this tutorial, I get the certificates in the certs folder in the /etc/nginx directory.
 
-# Creating node express server
+# Creating node express server and client
+
+```bash
+mkdir mtls_node
+cp -r certs mtls_node
+cd mtls_node
+yarn init -y
+yarn add express cors axios
+yarn add @types/node @types/express @types/cors typescript ts-node -D
+mkdir src
+touch src/app.ts
+touch src/client.ts
+```
+
+I created the mtls_node folder but you can name it whatever you want. I copy-pasted the certs folder to the mtls_node.
+
+### src/app.ts
+
+```typescript
+import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+const port = 3000;
+const host = "127.0.0.1";
+const app = express();
+
+app.use(cors());
+
+app.get("/api/test", (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json({
+    message: "certificate verified succesfully",
+  });
+});
+
+app.listen(port, host, () => {
+  console.log("im listening");
+});
+```
+
+When the nginx server passes the get request to the express server that is running on "127.0.0.1:3000" the express server sends the client a message with a 200 status code.
+
+### src/client.ts
+
+```typescript
+import axios, { AxiosError } from "axios";
+import https from "https";
+import fs from "fs";
+
+const getRequestWithCertificate = async () => {
+  try {
+    const cert = fs.readFileSync("certs/client.crt");
+    const key = fs.readFileSync("certs/client.key");
+    const hostName = "192.168.0.20";
+    const httpsAgent = new https.Agent({
+      cert,
+      key,
+      rejectUnauthorized: false,
+    });
+
+    const response = await axios.get(`https://${hostName}/api/test`, {
+      httpsAgent,
+    });
+    console.log(response.data);
+  } catch (e: any) {
+    const error = e as Error | AxiosError;
+    if (!axios.isAxiosError(error)) {
+      console.log("native error");
+      // when it throws native error
+      console.log(error);
+    } else {
+      // when it throws axios error
+      if (error.request) {
+        console.log("request error");
+        console.log(error.request);
+        //when requested but there is no response from server
+      }
+      if (error.response) {
+        console.log("response error");
+        // the request was made and server responsed tiwh a status code
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      }
+    }
+  }
+};
+
+setTimeout(() => {
+  getRequestWithCertificate();
+}, 1000);
+```
+
+While creating the client,the important thing is the "rejectUnauthorized: false" side. If the rejectUnauthorized is true, the axios throws the 'DEPTH_ZERO_SELF_SIGNED_CERT' error.
+
+# Compiling and running
+
+Compiling the project
+
+```bash
+tsc
+```
+
+Running the app
+
+```bash
+node build/app.js
+```
+
+Running the client
+
+```bash
+node build/client.js
+```
+
+When we run the build/client.js we should see the console log like this.
+
+```js
+{
+  message: "certificate verified succesfully";
+}
+```
+
+Thanks for reading.
+
+Contact me
+
+- [Linkedin](https://www.linkedin.com/in/cengiz-berat-din%C3%A7kan-ab4208128/)
+
+- [twitter](https://twitter.com/dinckan_berat)
+
+- [github](https://github.com/pandashavenobugs)
