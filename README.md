@@ -33,13 +33,13 @@ Creating server certificate and key.
 openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout server.key -out server.crt
 ```
 
-Creating client certificate and key
+Creating client certificate and key.
 
 ```bash
 openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout client.key -out client.crt
 ```
 
-navigating back and copy-pasting the certs folder to /etc/nginx/ directory
+Navigating back and copy-pasting the certs folder to /etc/nginx/ directory.
 
 ```bash
 cd ..
@@ -48,13 +48,13 @@ sudo cp -r certs /etc/nginx/
 
 # nginx configuration
 
-heading to the /etc/nginx directory
+Heading to the /etc/nginx directory.
 
 ```bash
 cd /etc/nginx/sites-available
 ```
 
-creating and editingthe nginx server configuration which is named myapp.
+Creating and editingthe nginx server configuration which is named myapp.
 
 The myapp file
 
@@ -79,7 +79,7 @@ In this example, using "ssl_client_certificate", the nginx server verifies the c
 
 ### Note: Usually ssl certificates are used in /etc/ssl directory but in this tutorial, I get the certificates in the certs folder in the /etc/nginx directory.
 
-# Creating node express server and client
+# Creating node express server and client.
 
 ```bash
 mkdir mtls_node
@@ -174,19 +174,19 @@ While creating the client,the important thing is the "rejectUnauthorized: false"
 
 # Compiling and running
 
-Compiling the project
+Compiling the project.
 
 ```bash
 tsc
 ```
 
-Running the app
+Running the app.
 
 ```bash
 node build/app.js
 ```
 
-Running the client
+Running the client.
 
 ```bash
 node build/client.js
@@ -208,7 +208,7 @@ Sources:
 - https://www.youtube.com/watch?v=UzEzjon3IAo&t=171s
 - https://medium.com/geekculture/mtls-with-nginx-and-nodejs-e3d0980ed950
 
-Contact me
+Contact me:
 
 - [Linkedin](https://www.linkedin.com/in/cengiz-berat-din%C3%A7kan-ab4208128/)
 
