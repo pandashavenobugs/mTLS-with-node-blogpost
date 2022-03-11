@@ -1,4 +1,4 @@
-Mutual TLS a.k.a mTLS is a method for mutual authentication between server and client and used to secure microservices. . In this tutorial, I make a basic mTSL example using nginx and node.
+Mutual TLS a.k.a mTLS is a method for mutual authentication between server and client and used to secure microservices. In this tutorial, I make a basic mTSL example using nginx and node.
 
 # Github Code
 
