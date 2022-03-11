@@ -93,7 +93,7 @@ I comment out the sites-enabled side because the myapp can be affected in a nega
 
 In this example, using "ssl_client_certificate", the nginx server verifies the certificate which is claimed by the client. The client makes a request to the "https://{serverIP}/api/" host with the client certificate and client key. If the nginx server verifies the certificate, passes this request to "http://127.0.0.1:3000".
 
-### Note: Usually ssl certificates are used in /etc/ssl directory but in this tutorial, I get the certificates from the certs folder in the /etc/nginx directory.
+### Note: Usually ssl certificates are used in the /etc/ssl directory but in this tutorial, I get the certificates from the certs folder in the /etc/nginx directory.
 
 # Creating node express server and client.
 
