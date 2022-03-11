@@ -18,16 +18,16 @@ The nginx server presents the TLS certificate and verifies the certificate of th
 
 # Creating certificates
 
-Creating a cert folder and navigating to it
+Creating the certs folder and navigating to it.
 
 ```bash
 mkdir certs
 cd certs
 ```
 
-Creating server certificate and key
+Creating server certificate and key.
 
-### note After creating the certificate and key, we could see some questions about certificates such as country, locality name and email address, etc. You can pass all of the questions by pressing enter. In this tutorial, I'm passing all of these questions because I use the IP address instead of hostname. In addition, you can change the rsa and days. It depends on what you want.
+### note After creating the certificate and key, we could see some questions about certificates such as country, locality name and email address, etc. You can pass all of the questions by pressing enter. In this tutorial, I'm passing all of these questions because I use the IP address instead of the hostname. In addition, you can change the rsa and days. It depends on what you want.
 
 ```bash
 openssl req -x509 -nodes -days 9999 -newkey rsa:2048 -keyout server.key -out server.crt
