@@ -1,8 +1,12 @@
 Mutual TLS a.k.a mTLS is a method for mutual authentication between server and client. In this tutorial, I make a basic mTSL example using nginx and node.
 
-First of all the client connects to the server then the server presents its own TLS certificate. Unlike the TLS encryption protocol, in mTLS both server and client have a certificate and the server verifies the certificate of the client. The client presents its own certificate. The server grants access to the client depending on whether the client of the certificate is verified or not.
+# Github Code
 
-source:https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/
+You can read the project belonging to this tutorial by getting the link below.
+
+- https://github.com/pandashavenobugs/mTLS-with-node-blogpost
+
+First of all the client connects to the server then the server presents its own TLS certificate. Unlike the TLS encryption protocol, in mTLS both server and client have a certificate and the server verifies the certificate of the client. The client presents its own certificate. The server grants access to the client depending on whether the client of the certificate is verified or not.
 
 <!-- ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/du9k2ygt8btga8yg7nz8.png) -->
 
@@ -197,6 +201,12 @@ When we run the build/client.js we should see the console log like this.
 ```
 
 Thanks for reading.
+
+Sources:
+
+- https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/
+- https://www.youtube.com/watch?v=UzEzjon3IAo&t=171s
+- https://medium.com/geekculture/mtls-with-nginx-and-nodejs-e3d0980ed950
 
 Contact me
 
