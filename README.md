@@ -1,6 +1,6 @@
-Mutual TLS a.k.a mTLS is a method for mutual authentication between server and client. Unlike the TLS encryption protocol, in mTLS both server and client have a certificate and the server verifies the certificate of the client.
+Mutual TLS a.k.a mTLS is a method for mutual authentication between server and client. In this tutorial, I make a basic mTSL example using nginx and node.
 
-First of all the client connects to the server then the server presents its own TLS certificate. The client presents its own certificate. The server grants access to the client depending on whether the client of the certificate is verified or not.
+First of all the client connects to the server then the server presents its own TLS certificate. Unlike the TLS encryption protocol, in mTLS both server and client have a certificate and the server verifies the certificate of the client. The client presents its own certificate. The server grants access to the client depending on whether the client of the certificate is verified or not.
 
 source:https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/
 
